@@ -1,0 +1,42 @@
+
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Autorisation Form</mat-card-title>
+    <mat-card-subtitle>Log In</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Введите свой логин</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="credential.login" name="login" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Введите свой пароль</mat-label>
+        <input matInput [type]="hide ? 'password':'text'" [(ngModel)]="credential.password" name="password"/>
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Скрыть пароль'"
+          [attr.aria-Press]="'скрыть'"
+        >
+          <!-- <mat-icon > {{спрятать? 'visibility_off': 'visibility'}} </ mat-icon>  -->
+        </button>
+      </mat-form-field>
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="show()">Войти</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <code *ngIf="!disabled">{{credential | json}}</code>
+  </mat-card-footer>
+</mat-card>
